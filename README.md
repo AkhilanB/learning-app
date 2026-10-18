@@ -30,4 +30,4 @@ The words come from 한국어 학습용 어휘 목록 (Korean learner vocabulary
 
 ## License
 
-The app's code is licensed under the GNU General Public License v3 (`LICENSE`). The vocabulary list stays under its own KOGL Type 1 license, and the icon font Gugi (`scripts/fonts/`) under the SIL Open Font License.
+The app's code is licensed under the GNU General Public License v3 (`LICENSE`). The vocabulary list stays under its own KOGL Type 1 license, and the icon font Nanum Gothic (`scripts/fonts/`) under the SIL Open Font License.

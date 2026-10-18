@@ -3,8 +3,8 @@
 
 Run once; the PNG files it writes into site/ are committed. iOS does not use
 SVG icons, so the icon is provided as PNG at the sizes iOS and the manifest
-use. The font is Gugi (scripts/fonts/Gugi-Regular.ttf, SIL Open Font
-License), a rounded Hangul face.
+use. The font is Nanum Gothic (scripts/fonts/NanumGothic-Regular.ttf, SIL
+Open Font License), a clean sans-serif Hangul face.
 """
 
 from pathlib import Path
@@ -12,7 +12,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
-FONT_FILE = ROOT / 'scripts' / 'fonts' / 'Gugi-Regular.ttf'
+FONT_FILE = ROOT / 'scripts' / 'fonts' / 'NanumGothic-Regular.ttf'
 GLYPH = '한'
 GLYPH_HEIGHT = 0.6  # of the square; leaves room for the rounded corners iOS cuts
 SITE = ROOT / 'site'
@@ -40,7 +40,7 @@ def render(size):
 
 def main():
     font = ImageFont.truetype(FONT_FILE, 10)
-    assert font.getname()[0] == 'Gugi', font.getname()
+    assert font.getname()[0] == 'NanumGothic', font.getname()
     for name, size in ICONS.items():
         render(size).save(SITE / name, optimize=True)
         print(f'{name}: {size}x{size}')
