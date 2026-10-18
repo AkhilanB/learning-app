@@ -1,0 +1,98 @@
+{
+  "start": "start",
+  "categories": {
+    "noun_ending_with_consonant": { "join": "word" },
+    "noun_ending_with_vowel": { "join": "word" },
+    "location_noun_ending_with_consonant": { "join": "word" },
+    "location_noun_ending_with_vowel": { "join": "word" },
+    "verbal_noun_ending_with_consonant": { "join": "word" },
+    "verbal_noun_ending_with_vowel": { "join": "word" },
+    "pronoun_ending_with_consonant": { "join": "word" },
+    "pronoun_ending_with_vowel": { "join": "word" },
+    "stem_bright_object": { "join": "word" },
+    "stem_bright_no_object": { "join": "word" },
+    "stem_dark_object": { "join": "word" },
+    "stem_dark_no_object": { "join": "word" },
+    "stem_ha": { "join": "word" },
+    "topic_after_consonant": { "join": "attach", "follows": "consonant" },
+    "topic_after_vowel": { "join": "attach", "follows": "vowel" },
+    "object_after_consonant": { "join": "attach", "follows": "consonant" },
+    "object_after_vowel": { "join": "attach", "follows": "vowel" },
+    "present_after_bright": { "join": "merge", "follows": "bright" },
+    "present_after_dark": { "join": "merge", "follows": "dark" },
+    "present_after_ha": { "join": "merge", "follows": "ha" },
+    "past_after_bright": { "join": "merge", "follows": "bright" },
+    "past_after_dark": { "join": "merge", "follows": "dark" },
+    "past_after_ha": { "join": "merge", "follows": "ha" }
+  },
+  "rules": {
+    "start": [
+      ["topic_phrase", "predicate"]
+    ],
+    "topic_phrase": [
+      ["nominal_ending_with_consonant", "topic_after_consonant"],
+      ["nominal_ending_with_vowel", "topic_after_vowel"]
+    ],
+    "object_phrase": [
+      ["nominal_ending_with_consonant", "object_after_consonant"],
+      ["nominal_ending_with_vowel", "object_after_vowel"]
+    ],
+    "verbal_noun_object_phrase": [
+      ["verbal_noun_ending_with_consonant", "object_after_consonant"],
+      ["verbal_noun_ending_with_vowel", "object_after_vowel"]
+    ],
+    "nominal_ending_with_consonant": [
+      ["noun_ending_with_consonant"],
+      ["verbal_noun_ending_with_consonant"],
+      ["pronoun_ending_with_consonant"],
+      ["location_phrase_ending_with_consonant"]
+    ],
+    "nominal_ending_with_vowel": [
+      ["noun_ending_with_vowel"],
+      ["verbal_noun_ending_with_vowel"],
+      ["pronoun_ending_with_vowel"],
+      ["location_phrase_ending_with_vowel"]
+    ],
+    "location_phrase_ending_with_consonant": [
+      ["reference_noun", "location_noun_ending_with_consonant"]
+    ],
+    "location_phrase_ending_with_vowel": [
+      ["reference_noun", "location_noun_ending_with_vowel"]
+    ],
+    "reference_noun": [
+      ["noun_ending_with_consonant"],
+      ["noun_ending_with_vowel"]
+    ],
+    "predicate": [
+      ["intransitive_verb"],
+      ["transitive_predicate"]
+    ],
+    "transitive_predicate": [
+      ["object_phrase", "transitive_verb"],
+      ["verbal_noun_object_phrase", "ha_verb"]
+    ],
+    "intransitive_verb": [
+      ["stem_bright_no_object", "bright_ending"],
+      ["stem_dark_no_object", "dark_ending"]
+    ],
+    "transitive_verb": [
+      ["stem_bright_object", "bright_ending"],
+      ["stem_dark_object", "dark_ending"]
+    ],
+    "ha_verb": [
+      ["stem_ha", "ha_ending"]
+    ],
+    "bright_ending": [
+      ["present_after_bright"],
+      ["past_after_bright"]
+    ],
+    "dark_ending": [
+      ["present_after_dark"],
+      ["past_after_dark"]
+    ],
+    "ha_ending": [
+      ["present_after_ha"],
+      ["past_after_ha"]
+    ]
+  }
+}

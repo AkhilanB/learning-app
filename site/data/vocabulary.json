@@ -1,0 +1,198 @@
+{
+  "source": "국립국어원 (National Institute of Korean Language), 한국어 학습용 어휘 목록 (2003), KOGL Type 1. rank is the list's frequency rank (순위). See vocabulary/SELECTION.md for how the entries were chosen.",
+  "words": {
+    "noun_ending_with_consonant": [
+      { "word": "사람", "label": "사람", "gloss": "person", "rank": 12 },
+      { "word": "집", "label": "집", "gloss": "house, home", "rank": 49 },
+      { "word": "자신", "label": "자신", "gloss": "oneself", "rank": 72 },
+      { "word": "시간", "label": "시간", "gloss": "time, hour", "rank": 99 },
+      { "word": "인간", "label": "인간", "gloss": "human being", "rank": 102 },
+      { "word": "사실", "label": "사실", "gloss": "fact", "rank": 103 },
+      { "word": "눈", "label": "눈", "gloss": "eye", "rank": 107 },
+      { "word": "점", "label": "점", "gloss": "point, dot", "rank": 109 },
+      { "word": "다음", "label": "다음", "gloss": "the next, the following", "rank": 112 },
+      { "word": "돈", "label": "돈", "gloss": "money", "rank": 140 },
+      { "word": "날", "label": "날", "gloss": "day", "rank": 143 },
+      { "word": "여성", "label": "여성", "gloss": "woman, female", "rank": 146 },
+      { "word": "마음", "label": "마음", "gloss": "mind, heart", "rank": 148 },
+      { "word": "몸", "label": "몸", "gloss": "body", "rank": 156 },
+      { "word": "얼굴", "label": "얼굴", "gloss": "face", "rank": 157 },
+      { "word": "지역", "label": "지역", "gloss": "region, area", "rank": 162 },
+      { "word": "모습", "label": "모습", "gloss": "appearance, figure", "rank": 164 },
+      { "word": "물", "label": "물", "gloss": "water", "rank": 165 },
+      { "word": "이번", "label": "이번", "gloss": "this time", "rank": 172 },
+      { "word": "길", "label": "길", "gloss": "road, way", "rank": 173 },
+      { "word": "지금", "label": "지금", "gloss": "now, the present", "rank": 176 },
+      { "word": "방법", "label": "방법", "gloss": "method, way", "rank": 179 },
+      { "word": "처음", "label": "처음", "gloss": "the beginning, the first time", "rank": 184 },
+      { "word": "손", "label": "손", "gloss": "hand", "rank": 185 },
+      { "word": "과정", "label": "과정", "gloss": "process, course", "rank": 188 },
+      { "word": "삶", "label": "삶", "gloss": "life", "rank": 189 },
+      { "word": "교육", "label": "교육", "gloss": "education", "rank": 198 },
+      { "word": "예술", "label": "예술", "gloss": "art", "rank": 205 }
+    ],
+    "noun_ending_with_vowel": [
+      { "word": "때", "label": "때", "gloss": "time, occasion", "rank": 19 },
+      { "word": "사회", "label": "사회", "gloss": "society", "rank": 42 },
+      { "word": "문제", "label": "문제", "gloss": "problem, question", "rank": 53 },
+      { "word": "경우", "label": "경우", "gloss": "case, circumstance", "rank": 65 },
+      { "word": "문화", "label": "문화", "gloss": "culture", "rank": 73 },
+      { "word": "소리", "label": "소리", "gloss": "sound", "rank": 80 },
+      { "word": "여자", "label": "여자", "gloss": "woman", "rank": 84 },
+      { "word": "정도", "label": "정도", "gloss": "degree, extent", "rank": 86 },
+      { "word": "아이", "label": "아이", "gloss": "child", "rank": 96 },
+      { "word": "시대", "label": "시대", "gloss": "era, age", "rank": 111 },
+      { "word": "세계", "label": "세계", "gloss": "world", "rank": 120 },
+      { "word": "학교", "label": "학교", "gloss": "school", "rank": 125 },
+      { "word": "정부", "label": "정부", "gloss": "government", "rank": 136 },
+      { "word": "국가", "label": "국가", "gloss": "nation, state", "rank": 141 },
+      { "word": "친구", "label": "친구", "gloss": "friend", "rank": 147 },
+      { "word": "관계", "label": "관계", "gloss": "relationship", "rank": 152 },
+      { "word": "남자", "label": "남자", "gloss": "man", "rank": 154 },
+      { "word": "우리나라", "label": "우리나라", "gloss": "our country (Korea)", "rank": 181 },
+      { "word": "그때", "label": "그때", "gloss": "that time, then", "rank": 187 },
+      { "word": "경제", "label": "경제", "gloss": "economy", "rank": 200 },
+      { "word": "역사", "label": "역사", "gloss": "history", "rank": 208 },
+      { "word": "결과", "label": "결과", "gloss": "result", "rank": 211 }
+    ],
+    "location_noun_ending_with_consonant": [
+      { "word": "속", "label": "속", "gloss": "inside, interior", "rank": 60 },
+      { "word": "앞", "label": "앞", "gloss": "front", "rank": 64 },
+      { "word": "안", "label": "안", "gloss": "inside", "rank": 118 },
+      { "word": "밖", "label": "밖", "gloss": "outside", "rank": 257 },
+      { "word": "옆", "label": "옆", "gloss": "side, next to", "rank": 444 },
+      { "word": "밑", "label": "밑", "gloss": "underneath, bottom", "rank": 652 }
+    ],
+    "location_noun_ending_with_vowel": [
+      { "word": "뒤", "label": "뒤", "gloss": "back, behind", "rank": 87 },
+      { "word": "위", "label": "위", "gloss": "top, above", "rank": 122 },
+      { "word": "가운데", "label": "가운데", "gloss": "middle", "rank": 264 },
+      { "word": "아래", "label": "아래", "gloss": "bottom, below", "rank": 453 }
+    ],
+    "verbal_noun_ending_with_consonant": [
+      { "word": "말", "label": "말", "gloss": "speech, words", "rank": 28 },
+      { "word": "일", "label": "일", "gloss": "work", "rank": 29 },
+      { "word": "생각", "label": "생각", "gloss": "thought, thinking", "rank": 58 },
+      { "word": "운동", "label": "운동", "gloss": "exercise", "rank": 123 },
+      { "word": "시작", "label": "시작", "gloss": "start, beginning", "rank": 131 },
+      { "word": "생활", "label": "생활", "gloss": "life, living", "rank": 174 },
+      { "word": "사용", "label": "사용", "gloss": "use (using something)", "rank": 254 },
+      { "word": "이용", "label": "이용", "gloss": "use (making use of something)", "rank": 305 }
+    ],
+    "verbal_noun_ending_with_vowel": [
+      { "word": "이야기", "label": "이야기", "gloss": "story, talk", "rank": 197 },
+      { "word": "연구", "label": "연구", "gloss": "research", "rank": 239 }
+    ],
+    "pronoun_ending_with_consonant": [
+      { "word": "그것", "label": "그것", "gloss": "that (thing)", "rank": 48 },
+      { "word": "이것", "label": "이것", "gloss": "this (thing)", "rank": 170 },
+      { "word": "이곳", "label": "이곳", "gloss": "this place", "rank": 624 },
+      { "word": "그곳", "label": "그곳", "gloss": "that place", "rank": 860 },
+      { "word": "이쪽", "label": "이쪽", "gloss": "this side, this way", "rank": 1885 },
+      { "word": "저쪽", "label": "저쪽", "gloss": "that side over there", "rank": 2031 },
+      { "word": "그쪽", "label": "그쪽", "gloss": "that side, that way", "rank": 3027 },
+      { "word": "저것", "label": "저것", "gloss": "that (thing) over there", "rank": 4304 },
+      { "word": "저곳", "label": "저곳", "gloss": "that place over there", "rank": 52763 }
+    ],
+    "pronoun_ending_with_vowel": [
+      { "word": "우리", "label": "우리", "gloss": "we", "rank": 13 },
+      { "word": "그", "label": "그", "gloss": "he", "rank": 15 },
+      { "word": "이", "label": "이", "gloss": "this (one)", "rank": 30 },
+      { "word": "저", "label": "저", "gloss": "I (humble)", "rank": 56 },
+      { "word": "여기", "label": "여기", "gloss": "here", "rank": 144 },
+      { "word": "거기", "label": "거기", "gloss": "there", "rank": 293 },
+      { "word": "저기", "label": "저기", "gloss": "over there", "rank": 1692 }
+    ],
+    "stem_bright_object": [
+      { "word": "보", "label": "보다", "gloss": "to see, to watch", "rank": 17 },
+      { "word": "가", "label": "가다", "gloss": "to go (to a place)", "rank": 25 },
+      { "word": "오", "label": "오다", "gloss": "to come (to a place)", "rank": 35 },
+      { "word": "알", "label": "알다", "gloss": "to know", "rank": 36 },
+      { "word": "받", "label": "받다", "gloss": "to receive", "rank": 47 },
+      { "word": "나오", "label": "나오다", "gloss": "to come out of (a place)", "rank": 50 },
+      { "word": "지나", "label": "지나다", "gloss": "to pass (a place)", "rank": 97 },
+      { "word": "들어가", "label": "들어가다", "gloss": "to go into (a place)", "rank": 158 },
+      { "word": "만나", "label": "만나다", "gloss": "to meet", "rank": 166 },
+      { "word": "찾", "label": "찾다", "gloss": "to look for, to find", "rank": 191 },
+      { "word": "나가", "label": "나가다", "gloss": "to go out of (a place)", "rank": 196 },
+      { "word": "사", "label": "사다", "gloss": "to buy", "rank": 199 },
+      { "word": "잡", "label": "잡다", "gloss": "to catch, to hold", "rank": 202 },
+      { "word": "들어오", "label": "들어오다", "gloss": "to come into (a place)", "rank": 256 }
+    ],
+    "stem_bright_no_object": [
+      { "word": "같", "label": "같다", "gloss": "to be the same, to be like", "rank": 22 },
+      { "word": "가", "label": "가다", "gloss": "to go", "rank": 25 },
+      { "word": "오", "label": "오다", "gloss": "to come", "rank": 35 },
+      { "word": "많", "label": "많다", "gloss": "to be many, to be much", "rank": 43 },
+      { "word": "좋", "label": "좋다", "gloss": "to be good", "rank": 45 },
+      { "word": "나오", "label": "나오다", "gloss": "to come out", "rank": 50 },
+      { "word": "살", "label": "살다", "gloss": "to live", "rank": 55 },
+      { "word": "지나", "label": "지나다", "gloss": "to pass, to go by", "rank": 97 },
+      { "word": "나", "label": "나다", "gloss": "to come out, to arise", "rank": 104 },
+      { "word": "들어가", "label": "들어가다", "gloss": "to go in", "rank": 158 },
+      { "word": "나타나", "label": "나타나다", "gloss": "to appear", "rank": 160 },
+      { "word": "앉", "label": "앉다", "gloss": "to sit", "rank": 183 },
+      { "word": "나가", "label": "나가다", "gloss": "to go out", "rank": 196 },
+      { "word": "일어나", "label": "일어나다", "gloss": "to get up, to happen", "rank": 216 },
+      { "word": "들어오", "label": "들어오다", "gloss": "to come in", "rank": 256 }
+    ],
+    "stem_dark_object": [
+      { "word": "만들", "label": "만들다", "gloss": "to make", "rank": 61 },
+      { "word": "먹", "label": "먹다", "gloss": "to eat", "rank": 70 },
+      { "word": "가지", "label": "가지다", "gloss": "to have, to hold", "rank": 94 },
+      { "word": "주", "label": "주다", "gloss": "to give", "rank": 101 },
+      { "word": "들", "label": "들다", "gloss": "to lift, to hold up", "rank": 130 },
+      { "word": "내", "label": "내다", "gloss": "to put out, to produce, to pay", "rank": 167 },
+      { "word": "보이", "label": "보이다", "gloss": "to show", "rank": 168 },
+      { "word": "읽", "label": "읽다", "gloss": "to read", "rank": 209 },
+      { "word": "넣", "label": "넣다", "gloss": "to put in", "rank": 219 },
+      { "word": "느끼", "label": "느끼다", "gloss": "to feel", "rank": 222 },
+      { "word": "밝히", "label": "밝히다", "gloss": "to reveal, to make clear", "rank": 230 },
+      { "word": "내리", "label": "내리다", "gloss": "to lower, to get off (a vehicle)", "rank": 243 }
+    ],
+    "stem_dark_no_object": [
+      { "word": "있", "label": "있다", "gloss": "to exist, to have", "rank": 4 },
+      { "word": "되", "label": "되다", "gloss": "to become", "rank": 5 },
+      { "word": "없", "label": "없다", "gloss": "to not exist, to not have", "rank": 10 },
+      { "word": "들", "label": "들다", "gloss": "to enter, to go in; to set in", "rank": 91 },
+      { "word": "보이", "label": "보이다", "gloss": "to be seen, to be visible", "rank": 93 },
+      { "word": "서", "label": "서다", "gloss": "to stand", "rank": 206 },
+      { "word": "죽", "label": "죽다", "gloss": "to die", "rank": 231 },
+      { "word": "내리", "label": "내리다", "gloss": "to come down, to fall (rain, snow)", "rank": 243 },
+      { "word": "생기", "label": "생기다", "gloss": "to come into being, to happen", "rank": 253 }
+    ],
+    "stem_ha": [
+      { "word": "하", "label": "하다", "gloss": "to do", "rank": 2 }
+    ],
+    "topic_after_consonant": [
+      { "word": "은", "label": "은", "gloss": "topic particle" }
+    ],
+    "topic_after_vowel": [
+      { "word": "는", "label": "는", "gloss": "topic particle" }
+    ],
+    "object_after_consonant": [
+      { "word": "을", "label": "을", "gloss": "object particle" }
+    ],
+    "object_after_vowel": [
+      { "word": "를", "label": "를", "gloss": "object particle" }
+    ],
+    "present_after_bright": [
+      { "word": "아요", "label": "-아요", "gloss": "present tense, polite" }
+    ],
+    "present_after_dark": [
+      { "word": "어요", "label": "-어요", "gloss": "present tense, polite" }
+    ],
+    "present_after_ha": [
+      { "word": "여요", "label": "-여요", "gloss": "present tense, polite (하 + 여 → 해)" }
+    ],
+    "past_after_bright": [
+      { "word": "았어요", "label": "-았어요", "gloss": "past tense, polite" }
+    ],
+    "past_after_dark": [
+      { "word": "었어요", "label": "-었어요", "gloss": "past tense, polite" }
+    ],
+    "past_after_ha": [
+      { "word": "였어요", "label": "-였어요", "gloss": "past tense, polite (하 + 였 → 했)" }
+    ]
+  }
+}

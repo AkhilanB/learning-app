@@ -1,0 +1,13 @@
+{
+  "name": "learn-korean",
+  "private": true,
+  "description": "Korean sentence reader: a progressive web app that generates grammatical Korean sentences from a context-free grammar.",
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
