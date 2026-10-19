@@ -114,6 +114,21 @@ test('joinWords keeps a verbal noun and 하 as separate words', () => {
   assert.deepEqual(joinWords(pieces, categories).map((word) => word.text), ['공부를', '했어요']);
 });
 
+test('joinWords builds the future and the purpose construction', () => {
+  const pieces = [
+    { category: 'noun', word: '그것', label: '그것', gloss: 'that (thing)' },
+    { category: 'particle', word: '을', label: '을', gloss: 'object particle' },
+    { category: 'stem', word: '먹', label: '먹다', gloss: 'to eat' },
+    { category: 'ending', word: '으러', label: '-으러', gloss: 'in order to' },
+    { category: 'stem', word: '가', label: '가다', gloss: 'to go' },
+    { category: 'ending', word: '을', label: '-을', gloss: 'future' },
+    { category: 'noun', word: '거예요', label: '거예요', gloss: 'future, polite' },
+  ];
+  const joined = joinWords(pieces, categories);
+  assert.deepEqual(joined.map((word) => word.text), ['그것을', '먹으러', '갈', '거예요']);
+  assert.deepEqual(joined[2].pieces, pieces.slice(4, 6));
+});
+
 test('joinWords does not merge a particle with the noun before it', () => {
   const pieces = [
     { category: 'noun', word: '저', label: '저', gloss: 'I' },

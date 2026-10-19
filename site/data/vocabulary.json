@@ -104,6 +104,16 @@
     "stem_ha": [
       { "word": "하", "label": "하다", "gloss": "to do", "rank": 2 }
     ],
+    "stem_purpose_object": [
+      { "word": "보", "label": "보다", "gloss": "to see, to watch", "rank": 17 },
+      { "word": "받", "label": "받다", "gloss": "to receive", "rank": 47 },
+      { "word": "만들", "label": "만들다", "gloss": "to make", "rank": 61 },
+      { "word": "먹", "label": "먹다", "gloss": "to eat", "rank": 70 }
+    ],
+    "stem_motion": [
+      { "word": "가", "label": "가다", "gloss": "to go", "rank": 25 },
+      { "word": "오", "label": "오다", "gloss": "to come", "rank": 35 }
+    ],
     "topic_after_consonant": [
       { "word": "은", "label": "은", "gloss": "topic particle" }
     ],
@@ -133,6 +143,15 @@
     ],
     "past_after_ha": [
       { "word": "였어요", "label": "-였어요", "gloss": "past tense, polite (하 + 였 → 했)" }
+    ],
+    "future_after_stem": [
+      { "word": "을", "label": "-을", "gloss": "future, before 거예요 (으 drops after a vowel or ㄹ: 가 + 을 → 갈)" }
+    ],
+    "purpose_after_stem": [
+      { "word": "으러", "label": "-으러", "gloss": "in order to, before 가다/오다 (으 drops after a vowel or ㄹ: 보 + 으러 → 보러)" }
+    ],
+    "future_copula": [
+      { "word": "거예요", "label": "거예요", "gloss": "future, polite, after -을 (거: thing + 예요: is)" }
     ]
   }
 }

@@ -24,7 +24,7 @@ Sentences are generated using a context-free grammar.
 
 #### Terminal symbols
 
-There is a fixed set of terminal symbols, each representing a category of words. Each terminal symbol has a corresponding list of vocabulary. Production rules contain only symbols, never literal words. A fixed word such as a particle is a category of its own, whose list may contain a single entry. Each category declares in the grammar data how its pieces join (see "Joining pieces into words"): starting a new word, attaching to the previous piece, or attaching with the vowel merge. A category that follows another (a particle or an ending) also declares what it must follow: a final consonant, a final vowel, or a bright, dark or 하 stem. Adding a category therefore needs no code change. The categories are:
+There is a fixed set of terminal symbols, each representing a category of words. Each terminal symbol has a corresponding list of vocabulary. Production rules contain only symbols, never literal words. A fixed word such as a particle is a category of its own, whose list may contain a single entry. Each category declares in the grammar data how its pieces join (see "Joining pieces into words"): starting a new word, attaching to the previous piece, or attaching with the vowel merge. A category that follows another (a particle or an ending) also declares what it must follow: a final consonant, a final vowel, a bright, dark or 하 stem, or any stem. Adding a category therefore needs no code change. The categories are:
 
 - Nouns, split by whether the noun ends in a final consonant (받침):
   - `noun_ending_with_consonant` (e.g. 학생)
@@ -41,6 +41,9 @@ There is a fixed set of terminal symbols, each representing a category of words.
   - `stem_dark_object`: any other last vowel, takes an object (e.g. 먹, 마시)
   - `stem_dark_no_object`: any other last vowel, no object (e.g. 있, 서)
   - `stem_ha`: 하 only (irregular stem). It takes a verbal noun as its object (공부를 해요). It is not part of the bright categories even though its vowel is ㅏ.
+- Verb stems for the purpose construction (X-으러 가다/오다, "go/come to X"; see "Purpose"):
+  - `stem_purpose_object`: action verbs that take an object and can come before -으러 (e.g. 먹, 보): 그것을 먹으러 가요.
+  - `stem_motion`: 가 and 오, the verbs that follow a purpose clause. Both are bright stems.
 - Particles, split by the noun ending they follow:
   - `topic_after_consonant`: 은
   - `topic_after_vowel`: 는
@@ -53,6 +56,9 @@ There is a fixed set of terminal symbols, each representing a category of words.
   - `past_after_bright`: 았어요
   - `past_after_dark`: 었어요
   - `past_after_ha`: 였어요
+  - `future_after_stem`: 을, the first part of the future -(으)ㄹ 거예요. It follows any stem (먹을, 갈, 할).
+  - `purpose_after_stem`: 으러 (먹으러, 보러, 하러). It follows any stem.
+- `future_copula`: 거예요, the second part of the future (먹을 거예요). It starts a word. It is one piece: 거 ("thing", the spoken form of 것) and the polite copula 예요 are not split, since learners meet -(으)ㄹ 거예요 as a unit.
 - Pronouns, split like nouns so they can take the right particle:
   - `pronoun_ending_with_consonant` (e.g. 그것, 이것)
   - `pronoun_ending_with_vowel` (e.g. 저, 우리)
@@ -78,14 +84,18 @@ The rules are layered. Intermediate non-terminals group the phrases, so that eac
 - (location_phrase_ending_with_consonant) → (reference_noun) (location_noun_ending_with_consonant)
 - (location_phrase_ending_with_vowel) → (reference_noun) (location_noun_ending_with_vowel)
 - (reference_noun) → (noun_ending_with_consonant) | (noun_ending_with_vowel)
-- (predicate) → (intransitive_verb) | (transitive_predicate)
+- (predicate) → (intransitive_verb) | (transitive_predicate) | (purpose_predicate)
 - (transitive_predicate) → (object_phrase) (transitive_verb) | (verbal_noun_object_phrase) (ha_verb)
 - (intransitive_verb) → (stem_bright_no_object) (bright_ending) | (stem_dark_no_object) (dark_ending)
 - (transitive_verb) → (stem_bright_object) (bright_ending) | (stem_dark_object) (dark_ending)
 - (ha_verb) → (stem_ha) (ha_ending)
-- (bright_ending) → (present_after_bright) | (past_after_bright)
-- (dark_ending) → (present_after_dark) | (past_after_dark)
-- (ha_ending) → (present_after_ha) | (past_after_ha)
+- (purpose_predicate) → (purpose_clause) (motion_verb)
+- (purpose_clause) → (object_phrase) (stem_purpose_object) (purpose_after_stem) | (verbal_noun_object_phrase) (stem_ha) (purpose_after_stem)
+- (motion_verb) → (stem_motion) (bright_ending)
+- (bright_ending) → (present_after_bright) | (past_after_bright) | (future)
+- (dark_ending) → (present_after_dark) | (past_after_dark) | (future)
+- (ha_ending) → (present_after_ha) | (past_after_ha) | (future)
+- (future) → (future_after_stem) (future_copula)
 
 `|` separates alternative rules for the same non-terminal. Each alternative is a separate rule for the uniform choice.
 
@@ -95,11 +105,15 @@ Rules pair each noun category with the matching particle category, and each stem
 
 A location noun never stands alone: it always follows a reference noun, and the particle after it matches the location noun's ending (학교 앞은, 집 위를). The reference noun is always an ordinary noun. Verbal nouns are excluded because they name actions, not places (공부 앞). Pronouns are excluded because 저 takes the possessive form 제 before a location noun (제 앞, not 저 앞). Location phrases do not nest (집 앞 옆 is not generated).
 
+#### Purpose
+
+A purpose clause is a verb with -으러 before 가다 or 오다: 저는 그것을 먹으러 가요 ("I go to eat that"), 우리는 공부를 하러 왔어요. Only action verbs that someone does on purpose can come before -으러. Descriptive verbs (좋다), 있다, 없다, 되다, 알다 and 보이다 cannot (좋으러 가요, 알러 가요), and neither can 가다, 오다 or 나오다 themselves (가러 가요). The purpose verb takes its object, or for 하, a verbal noun object, as in a main clause. A purpose verb without an object is not generated for now: of the selected verbs, only 살다 qualifies, and a single verb would make up half of all purpose clauses. 가다 and 오다 take no object after a purpose clause. The motion verb takes any tense (먹으러 갈 거예요). A destination (학교에 먹으러 가요) is not generated, since there is no 에 particle yet.
+
 #### Generation procedure
 
 Sentences are generated as follows: start with the start symbol. Then uniformly at random select a production rule that applies. In the resulting expression, take the leftmost non-terminal symbol, uniformly select an applicable production rule, then apply it. Continue the process until all symbols are terminal. The grammar is context-free and no rule shrinks the expression, so the expansion order does not change which sentences are generated or how often.
 
-Because each rule is chosen uniformly, the sentence types are not equally common, and this is intended. For example, a quarter of all sentences end in a verbal noun object with 하 (공부를 해요), and a quarter of all topics, and a quarter of the objects of verbs other than 하, are pronouns, so each pronoun appears much more often than each noun.
+Because each rule is chosen uniformly, the sentence types are not equally common, and this is intended. For example, a sixth of all sentences end in a verbal noun object with 하 (공부를 해요), a third have a purpose clause (먹으러 가요), and a quarter of all topics, and a quarter of the objects of verbs other than 하, are pronouns, so each pronoun appears much more often than each noun.
 
 Rules may refer back to themselves (recursion). If the expression ever grows longer than 30 symbols, it is discarded and generation restarts from the start symbol. Choices therefore stay exactly uniform. No rule may have an empty right-hand side, so an expression never shrinks. A test must check that the start symbol can derive a sentence of at most 30 symbols, so that a restart can always succeed. It must also check that every non-terminal can be fully expanded into terminals.
 
@@ -128,6 +142,7 @@ After word selection, the pieces are joined into the displayed sentence:
   | 하 | 하 + 여 → 해 | 하 + 여요 → 해요, 하 + 였어요 → 했어요 |
 
 - Stems ending in a consonant do not merge (먹 + 어요 → 먹어요, 받 + 았어요 → 받았어요). A final consonant carried by the ending (ㅆ in 았/었) becomes the final consonant of the merged syllable.
+- When an ending that starts with 으 (을, 으러) attaches with the merge, 으 is dropped after a stem ending in a vowel or in ㄹ. After a vowel, the final consonant of the 으 syllable becomes the stem's final consonant (가 + 을 → 갈, 하 + 을 → 할, 보 + 으러 → 보러). After ㄹ, a final ㄹ of the 으 syllable merges with the stem's (살 + 을 → 살, 만들 + 으러 → 만들러). After any other final consonant, 으 stays (먹 + 을 → 먹을, 받 + 으러 → 받으러). Endings after which a ㄹ stem drops its ㄹ (-으세요: 사세요, -으니까: 사니까) are not used yet, so this rule does not cover them.
 - Stems that end in a vowel not listed in the table are excluded for now. These vowels are ㅑ, ㅒ, ㅖ, ㅘ, ㅙ, ㅛ, ㅝ, ㅞ, ㅠ, ㅢ and ㅡ (for ㅡ, see "Grammar scope"). Stems whose last syllable has the vowel ㅘ or ㅛ and a final consonant are also excluded. The list has no such stem.
 - Particles never merge with the noun or pronoun before them. Contractions such as 저는 → 전 are not applied.
 - The sentence ends with a period, placed directly after the last word. The period is not a piece and has no gloss.
@@ -136,7 +151,7 @@ The merging works on Hangul syllables by splitting them into their letters (init
 
 #### Grammar scope
 
-The first version covers present and past tense in the polite 해요 style only. Every verb with irregular conjugation is excluded, except 하다. A verb is irregular if its 해요 forms do not follow the joining rules above. The irregular types include ㅂ, ㄷ, ㅅ, 르, ㅎ and 우 irregulars (e.g. 푸다 → 퍼요), and the contracted verbs 그러다, 이러다 and 저러다 (그러다 → 그래요, not 그러요). This list gives examples and is not complete. Stems ending in ㅡ (e.g. 쓰다), the copula 이다 and its negative 아니다 are also excluded for now. Regular stems ending in ㅂ, ㄷ or ㅅ (e.g. 입다, 받다, 웃다) and ㄹ stems (e.g. 살다 → 살아요) conjugate regularly in the 해요 style, so they are included. Interrogative pronouns (뭐, 누구, 무엇, 무어, 어디, 언제) are excluded, because no question forms are generated.
+The grammar covers the present, past and future (-(으)ㄹ 거예요) tenses in the polite 해요 style, and the purpose construction -(으)러 가다/오다. Every verb with irregular conjugation is excluded, except 하다. A verb is irregular if its 해요 forms do not follow the joining rules above. The irregular types include ㅂ, ㄷ, ㅅ, 르, ㅎ and 우 irregulars (e.g. 푸다 → 퍼요), and the contracted verbs 그러다, 이러다 and 저러다 (그러다 → 그래요, not 그러요). This list gives examples and is not complete. Stems ending in ㅡ (e.g. 쓰다), the copula 이다 and its negative 아니다 are also excluded for now. The copula appears only inside the fixed future piece 거예요. Regular stems ending in ㅂ, ㄷ or ㅅ (e.g. 입다, 받다, 웃다) and ㄹ stems (e.g. 살다 → 살아요) conjugate regularly in the 해요 style, so they are included. Interrogative pronouns (뭐, 누구, 무엇, 무어, 어디, 언제) are excluded, because no question forms are generated.
 
 Subject honorification (-(으)시-) is not generated. A topic that refers to a respected person needs it (선생님은 가세요, not 선생님은 가요), so honorific nouns and pronouns are excluded. These include words ending in -님 or -분 (선생님, 그분, 이분), 여러분, and kinship terms for elders such as 어머니, 아버지 and 할머니. Honorific verbs, which honor their subject (계시다, 주무시다, 잡수시다), are excluded for the same reason: no topic refers to a respected person, so they would always clash (저는 주무세요). Verbs whose object must be a respected person (모시다) are excluded too, since no object refers to one. Humble verbs whose respected person is a recipient left unstated, such as 드리다 (저는 그것을 드려요), are kept. The 반말 pronouns 너 and 나 are also excluded, because they clash with the polite 해요 endings (너는 가요, 나는 가요). With 해요 endings, the first person singular is 저.
 
@@ -155,7 +170,7 @@ Choose words by frequency rank, most frequent first, among those that fit a cate
 - About 20 nouns (명), not counting location nouns or verbal nouns. A noun that cannot stand alone as a topic or object, because it needs a word before it, is excluded. Examples are 전 (前), 후 (後), 동안 and 이상 (以上). Honorific nouns are excluded (see "Grammar scope").
 - About 10 location nouns (명): nouns that name a place relative to the noun before them, such as 앞, 뒤, 위, 아래, 안, 밖, 속 and 옆. A location noun is in this category only, never also an ordinary noun. 사이 is excluded, because it needs two nouns (학교와 집 사이).
 - About 10 verbal nouns. A verbal noun is a noun (명) whose 하다 verb is also in the list as a verb (동) with the same meaning, and which sounds natural as the object of 하다. For example, 공부 (명) and 공부하다 (동) give 공부를 해요. Matching spelling alone is not enough. The noun and the verb must be the same word: 기술 (技術, technique) is not the noun of 기술하다 (記述, to describe), 위 (above) is not the noun of 위하다, and 말 (horse) is not the noun of 말하다, though 말 (speech) is. The 풀이 column (Chinese characters or a note) helps tell them apart. A noun whose X를 하다 form sounds unnatural, such as 의미 (의미를 해요) or 관련 (관련을 해요), is not a verbal noun. A noun that is not a verbal noun may still be an ordinary noun. A verbal noun is a verbal noun only, never also an ordinary noun. A verbal noun's rank is the smaller (more frequent) of the noun's rank and its 하다 verb's rank, so it is chosen if either form is common. For 운동 (rank 123) and 운동하다 (rank 4,822), the rank is 123.
-- About 20 verbs and descriptive verbs (동, 형). A verb in both the object and the no-object categories counts twice. Honorific verbs are excluded (see "Grammar scope"). 하다 itself is the `stem_ha` category. Other 하다 verbs are not counted here: they enter only through their verbal noun, or are excluded (see "하다 verbs").
+- About 20 verbs and descriptive verbs (동, 형). A verb in both the object and the no-object categories counts twice. The purpose and motion categories (`stem_purpose_object`, `stem_motion`) reuse the selected verbs and are not counted: every selected verb with an object that can come before -으러 (see "Purpose") is a purpose verb, and 가 and 오 are the motion verbs. Honorific verbs are excluded (see "Grammar scope"). 하다 itself is the `stem_ha` category. Other 하다 verbs are not counted here: they enter only through their verbal noun, or are excluded (see "하다 verbs").
 - The pronouns (대) of level A, with these exceptions:
   - the interrogatives (뭐, 누구, 무엇, 어디, 언제) and 아무;
   - the spoken contractions 거 (of 것), 그거, 이거 and 저거. 거 cannot stand alone, and the others are spoken forms, while the app follows written Korean (그것, 이것 and 저것 are kept);

@@ -72,12 +72,31 @@ export const STEM_VOWELS = new Set(['ㅏ', 'ㅓ', 'ㅗ', 'ㅜ', 'ㅣ', 'ㅐ', '�
 // Attaches an ending to a stem. When the stem ends in a vowel and the ending
 // starts with a bare vowel (아, 어, 여), the two syllables merge into one, and
 // the ending's final consonant (ㅆ in 았/었) becomes the merged syllable's.
+// An ending that starts with 으 is handled by dropEu.
 export function merge(stem, ending) {
   const stemEnd = lastSyllable(stem);
   const endingStart = decompose(ending[0]);
+  if (endingStart.initial === 'ㅇ' && endingStart.vowel === 'ㅡ') {
+    return dropEu(stem, stemEnd, ending, endingStart);
+  }
   const vowel = MERGED_VOWELS.get(stemEnd.vowel + endingStart.vowel);
   if (stemEnd.final !== '' || endingStart.initial !== 'ㅇ' || vowel === undefined) {
     return stem + ending;
   }
   return stem.slice(0, -1) + compose(stemEnd.initial, vowel, endingStart.final) + ending.slice(1);
+}
+
+// 으 at the start of an ending (을, 으러) drops after a vowel or ㄹ. After a
+// vowel, the 으 syllable's final consonant becomes the stem's (가 + 을 → 갈,
+// 보 + 으러 → 보러); after ㄹ, a final ㄹ merges with the stem's (살 + 을 → 살,
+// 만들 + 으러 → 만들러). Endings before which a ㄹ stem drops its ㄹ (-으세요:
+// 사세요) are not covered.
+function dropEu(stem, stemEnd, ending, endingStart) {
+  if (stemEnd.final === '') {
+    return stem.slice(0, -1) + compose(stemEnd.initial, stemEnd.vowel, endingStart.final) + ending.slice(1);
+  }
+  if (stemEnd.final === 'ㄹ' && (endingStart.final === '' || endingStart.final === 'ㄹ')) {
+    return stem + ending.slice(1);
+  }
+  return stem + ending;
 }

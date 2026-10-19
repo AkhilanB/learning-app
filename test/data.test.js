@@ -8,7 +8,7 @@ import { STEM_VOWELS, hasFinalConsonant, isSyllable, lastSyllable } from '../sit
 import { derivations, grammar, minimumLengths, vocabulary, words } from './data.js';
 
 const JOINS = new Set(['word', 'attach', 'merge']);
-const FOLLOWS = new Set(['consonant', 'vowel', 'bright', 'dark', 'ha']);
+const FOLLOWS = new Set(['consonant', 'vowel', 'bright', 'dark', 'ha', 'stem']);
 const BRIGHT_VOWELS = new Set(['ㅏ', 'ㅑ', 'ㅗ']);
 // A stem whose last syllable has one of these vowels and a final consonant is
 // excluded (DESIGN.md, "Joining pieces into words").
@@ -27,6 +27,9 @@ const REQUIREMENTS = {
   bright: (word) => BRIGHT_VOWELS.has(lastSyllable(word).vowel) && !isHa(word),
   dark: (word) => !BRIGHT_VOWELS.has(lastSyllable(word).vowel),
   ha: (word) => isHa(word),
+  // Any stem: the 으 merge does not depend on the stem's vowel. Every stem's
+  // last vowel is checked by 'no stem ends in an excluded vowel'.
+  stem: () => true,
 };
 
 // Endings are the words of categories that attach with the vowel merge; stems

@@ -91,6 +91,29 @@ test('merge carries the ending\'s final consonant into the merged syllable', () 
   assert.equal(merge('가지', '었어요'), '가졌어요');
 });
 
+test('merge drops 으 after a vowel, its final consonant joining the stem', () => {
+  assert.equal(merge('가', '을'), '갈');
+  assert.equal(merge('하', '을'), '할');
+  assert.equal(merge('보이', '을'), '보일');
+  assert.equal(merge('쉬', '을'), '쉴');
+  assert.equal(merge('보', '으러'), '보러');
+  assert.equal(merge('하', '으러'), '하러');
+});
+
+test('merge drops 으 after ㄹ, merging a final ㄹ with the stem\'s', () => {
+  assert.equal(merge('살', '을'), '살');
+  assert.equal(merge('만들', '을'), '만들');
+  assert.equal(merge('만들', '으러'), '만들러');
+});
+
+test('merge keeps 으 after any other final consonant', () => {
+  assert.equal(merge('먹', '을'), '먹을');
+  assert.equal(merge('받', '으러'), '받으러');
+  assert.equal(merge('좋', '을'), '좋을');
+  assert.equal(merge('읽', '을'), '읽을');
+  assert.equal(merge('있', '을'), '있을');
+});
+
 test('merge leaves an ending that starts with a consonant alone', () => {
   assert.equal(merge('가', '고'), '가고');
   assert.equal(merge('가', '세요'), '가세요');

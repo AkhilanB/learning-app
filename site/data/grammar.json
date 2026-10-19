@@ -14,6 +14,8 @@
     "stem_dark_object": { "join": "word" },
     "stem_dark_no_object": { "join": "word" },
     "stem_ha": { "join": "word" },
+    "stem_purpose_object": { "join": "word" },
+    "stem_motion": { "join": "word" },
     "topic_after_consonant": { "join": "attach", "follows": "consonant" },
     "topic_after_vowel": { "join": "attach", "follows": "vowel" },
     "object_after_consonant": { "join": "attach", "follows": "consonant" },
@@ -23,7 +25,10 @@
     "present_after_ha": { "join": "merge", "follows": "ha" },
     "past_after_bright": { "join": "merge", "follows": "bright" },
     "past_after_dark": { "join": "merge", "follows": "dark" },
-    "past_after_ha": { "join": "merge", "follows": "ha" }
+    "past_after_ha": { "join": "merge", "follows": "ha" },
+    "future_after_stem": { "join": "merge", "follows": "stem" },
+    "purpose_after_stem": { "join": "merge", "follows": "stem" },
+    "future_copula": { "join": "word" }
   },
   "rules": {
     "start": [
@@ -65,7 +70,8 @@
     ],
     "predicate": [
       ["intransitive_verb"],
-      ["transitive_predicate"]
+      ["transitive_predicate"],
+      ["purpose_predicate"]
     ],
     "transitive_predicate": [
       ["object_phrase", "transitive_verb"],
@@ -82,17 +88,33 @@
     "ha_verb": [
       ["stem_ha", "ha_ending"]
     ],
+    "purpose_predicate": [
+      ["purpose_clause", "motion_verb"]
+    ],
+    "purpose_clause": [
+      ["object_phrase", "stem_purpose_object", "purpose_after_stem"],
+      ["verbal_noun_object_phrase", "stem_ha", "purpose_after_stem"]
+    ],
+    "motion_verb": [
+      ["stem_motion", "bright_ending"]
+    ],
     "bright_ending": [
       ["present_after_bright"],
-      ["past_after_bright"]
+      ["past_after_bright"],
+      ["future"]
     ],
     "dark_ending": [
       ["present_after_dark"],
-      ["past_after_dark"]
+      ["past_after_dark"],
+      ["future"]
     ],
     "ha_ending": [
       ["present_after_ha"],
-      ["past_after_ha"]
+      ["past_after_ha"],
+      ["future"]
+    ],
+    "future": [
+      ["future_after_stem", "future_copula"]
     ]
   }
 }

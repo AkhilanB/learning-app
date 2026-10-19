@@ -71,6 +71,14 @@ Object use: motion verbs take a place as an object (학교를 가요, 집을 나
 
 Next candidates past the cutoff, for a larger target (these were included when the target was 50): 가지다 (94), 지나다 (97; with and without an object), 주다 (101), 나다 (104), 들다 (130, to lift), 들어가다 (158; with and without an object), 나타나다 (160), 만나다 (166), 내다 (167), 보이다 (168, causative: to show), 앉다 (183), 찾다 (191), 나가다 (196; with and without an object), 사다 (199), 잡다 (202), 서다 (206), 읽다 (209), 일어나다 (216), 넣다 (219), 느끼다 (222), 밝히다 (230), 죽다 (231), 내리다 (243; with and without an object), 생기다 (253), 들어오다 (256; with and without an object), then 작다 (259), 타다 (260), 보내다 (265), 두다 (266), 높다 (277), 다니다 (284), 열다 (287), 남다 (290), 기다리다 (298). Already judged beyond the cutoff: 시작하다 (131) and 사용하다 (254) enter through their verbal nouns; 의하다 (110) is a 하다 verb whose first part is not a verbal noun; 이러하다 (113), 중요하다 (220) and 필요하다 (251) are 하다 descriptive verbs; 다르다 (163) and 부르다 (227) are 르 irregulars; 쓰다 (169, 175) is a ㅡ stem; 새롭다 (180), 어렵다 (223) and 쉽다 (246) are ㅂ irregulars; 갖다 (190) has the 해요 form 가져요, not 갖아요; 짓다 (247) is a ㅅ irregular; 이렇다 (105) is a ㅎ irregular; 묻다 (289, to ask) is a ㄷ irregular.
 
+## Purpose and motion verbs
+
+Not a separate selection: these categories reuse the verbs above and are not counted toward the 20 (DESIGN.md, "Purpose").
+
+- `stem_purpose_object`: the selected verbs with an object that can come before -으러: 보다, 받다, 만들다, 먹다. Not taken: 가다, 오다 and 나오다 (가러 가요 is unnatural), and 알다 (knowing is not done on purpose: 알러 가요).
+- `stem_motion`: 가다 and 오다.
+- No purpose verb without an object: of the selected no-object verbs, only 살다 qualifies (살러 가요). 같다, 많다, 좋다, 있다, 없다 and 보이다 are states, 되다 and 들다 are not done on purpose, and 가다, 오다 and 나오다 are motion verbs.
+
 ## Pronouns (대): 16, level A
 
 All level A pronouns, minus the exceptions in DESIGN.md: the interrogatives (뭐, 누구, 무엇, 어디, 언제) and 아무; the spoken contractions (거, 그거, 이거, 저거); 저04; the 반말 pronouns 너 and 나; and the honorific 그분, 이분 and 여러분. Included: 우리, 그, 이, 저, 여기, 거기, 저기 (ending in a vowel) and 그것, 이것, 이곳, 그곳, 이쪽, 저쪽, 그쪽, 저것, 저곳 (ending in a consonant).
