@@ -8,7 +8,7 @@ Development should happen entirely on this Linux machine. This directory is the 
 
 ## App flow
 
-The app screen is very simple. A Korean sentence is shown in the center of the screen. There is a large button at the bottom of the screen to move to the next sentence. The button shows only an arrow icon (→), with the accessible label "다음". Once the reader is done reading the sentence, they move to the next sentence. Sentences keep generating infinitely.
+The app screen is very simple. A Korean sentence is shown in the center of the screen. There is a large green button at the bottom of the screen to move to the next sentence. The button shows only an arrow icon (→), with the accessible label "다음". Once the reader is done reading the sentence, they move to the next sentence. Sentences keep generating infinitely.
 
 There is no back button and no history. Each sentence is generated independently of the previous ones, so a sentence may repeat.
 
